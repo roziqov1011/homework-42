@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shorts icon" href="https://github.com/roziqov1011/LOGO/blob/main/img/logo-white.png?raw=true">
+        <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="./css/style.css">
+        <title>dars-42</title>
+    </head>
+    <body class="bg-primary">
+
+        <main>
+            <div class="container">
+            <form class="mb-4 js-search-form" action="https://echo.htmlacademy.ru" method="get">
+                <input class="form-control js-search-form__input mt-4" type="search" name="search" aria-label="search" placeholder="movie search" required>
+            </form>
+            <select class="form-select js-select w-25" aria-label="Disabled select example">
+                <option selected>tartiblang</option>
+                <option class="js-option bg-danger text-white">title</option>
+                <option class="js-option bg-danger text-white">title revers</option>
+                <option class="js-option bg-primary text-white">rating</option>
+                <option class="js-option bg-primary text-white">rating revers</option>
+                <option class="js-option bg-success text-white">year</option>
+                <option class="js-option bg-success text-white">year revers</option>
+            </select>
+            <ul class="js-result list-unstyled list-none"></ul>
+            <section>
+                <h2 class="visually-hidden">Qidruv natijalari</h2>
+                <ul class="search-results list-unstyled">
+                </ul>
+            </section>
+            </div>
+        </main>
+
+        <template id="search-results-template">
+            <li class="search-results__item movie p-3 mb-4 rounded bg-white shadow-sm">
+                <img class="movie__poster mb-3 img-fluid" src="" alt="" >
+                <h3 class="movie__title h4">Lorem ipsum dolor sit amet.</h3>
+                <p class="movie__rating">Reting</p>
+                <p class="movie__summary">Summary</p>
+                <a class="movie__trailer-link" href="" target="_block">movie link</a>
+            </li>
+        </template>
+
+        <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="./js/movies.js"></script>
+        <script src="./js/utils.js"></script>
+        <script src="./js/main.js"></script>
+    </body>
+</html>
