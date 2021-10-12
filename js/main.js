@@ -1,6 +1,6 @@
 // Kinolar haqidagi malumotlarni normaga keltirish
 
-var normalizeMovies = movies.map(function (movie, i) {
+var normalizeMovies = movies.map((movie, i)=> {
     return {
         id: i + 1,
         title: movie.Title.toString(),
@@ -31,7 +31,7 @@ var elSearchResultTemplate = $_("#search-results-template").content;
 
 //Logigaka oid yordamchi funksiyalar
 
-var createMovieElement = function (movie) {
+var createMovieElement = (movie)=> {
     var movieElement = elSearchResultTemplate.cloneNode(true);
 
 
@@ -44,12 +44,12 @@ var createMovieElement = function (movie) {
     return movieElement;
 };
 
-var renderMovies = function (movies) {
+var renderMovies = (movies)=> {
     elSearchResults.innerHTML = '';
 
     var searchResultFragment = document.createDocumentFragment();
 
-    movies.forEach(function(movie){
+    movies.forEach((movie)=>{
         searchResultFragment.appendChild(createMovieElement(movie));
 
     });
@@ -63,14 +63,14 @@ var renderMovies = function (movies) {
 
 // qidruvga oid funksiya 
 
-var searchForMovies = function (evt){
+var searchForMovies = (evt)=>{
     evt.preventDefault();
 
     elResultPage2.style.display = "none";
     var  searchQuery = new RegExp(elSearchInput.value.trim(), 'gi');
 
 
-    var searchResults = normalizeMovies.filter(function (movie){
+    var searchResults = normalizeMovies.filter((movie)=>{
         return movie.title.match(searchQuery);
     });
     renderMovies(searchResults);
@@ -82,14 +82,14 @@ elSearchForm.addEventListener("submit", searchForMovies);
 
 // sort Title 
 var sortTitle = normalizeMovies.slice(0);
-sortTitle.sort(function(a,b) {
+sortTitle.sort((a,b)=> {
     var x = a.title.toLowerCase();
     var y = b.title.toLowerCase();
     return x < y ? -1 : x > y ? 1 : 0;
 });
 // sort Title  revers
 var sortTitleRevers = normalizeMovies.slice(0);
-sortTitleRevers.sort(function(a,b) {
+sortTitleRevers.sort((a,b)=> {
     var x = a.title.toLowerCase();
     var y = b.title.toLowerCase();
     return x > y ? -1 : x < y ? 1 : 0;
@@ -97,23 +97,23 @@ sortTitleRevers.sort(function(a,b) {
 
 // sort Year
 var sortYear = normalizeMovies.slice(0);
-sortYear.sort(function(a,b) {
+sortYear.sort((a,b)=> {
     return a.year - b.year;
 });
 // sort Year revers
 var sortYearRevers = normalizeMovies.slice(0);
-sortYearRevers.sort(function(a,b) {
+sortYearRevers.sort((a,b)=> {
     return b.year - a.year;
 });
 
 //sort ImdbReting
 var sortImdbReting = normalizeMovies.slice(0);
-sortImdbReting.sort(function(a,b) {
+sortImdbReting.sort((a,b)=> {
     return a.imdbReting - b.imdbReting;
 });
 //sort ImdbReting revers
 var sortImdbRetingRevers = normalizeMovies.slice(0);
-sortImdbRetingRevers.sort(function(a,b) {
+sortImdbRetingRevers.sort((a,b)=> {
     return b.imdbReting - a.imdbReting;
 });
 
@@ -122,7 +122,7 @@ var select = $_(".js-select");
 var sorts = sortTitle;
 
 var elResultPage2 = $_(".js-result")
-sorts.forEach(function (movie){
+sorts.forEach((movie)=>{
     var elItem = document.createElement("li");
     var elItemImg = document.createElement("img")
     var elItemTitle = document.createElement("h3")
@@ -154,7 +154,7 @@ sorts.forEach(function (movie){
     elResultPage2.appendChild(elItem);
 });
 
-select.addEventListener("change", function (evt){
+select.addEventListener("change", (evt)=>{
     if (select.value == "title"){
         sorts = sortTitle;
     }else if (select.value == "title revers"){
@@ -175,7 +175,7 @@ select.addEventListener("change", function (evt){
 
     var elResultPage = $_(".js-result")
     elResultPage.innerHTML = "";
-sorts.forEach(function (movie){
+sorts.forEach((movie)=>{
     var elItem = document.createElement("li");
     var elItemImg = document.createElement("img")
     var elItemTitle = document.createElement("h3")
